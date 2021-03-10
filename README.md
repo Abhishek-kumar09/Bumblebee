@@ -1,17 +1,29 @@
-# Twitch Extension React Boilerplate
-- [Twitch Extension React Boilerplate](#twitch-extension-react-boilerplate)
-  - [Requirements](#requirements)
-  - [First time Usage](#first-time-usage)
-    - [Developer Rig Usage](#developer-rig-usage)
-    - [Local Development](#local-development)
-      - [Loading the Sample on Twitch](#loading-the-sample-on-twitch)
-  - [Moving to Hosted Test (and beyond!)](#moving-to-hosted-test-and-beyond)
-    - [Webpack Config](#webpack-config)
-    - [Authentication](#authentication)
-  - [File Structure](#file-structure)
-    - [dist](#dist)
-    - [public](#public)
-    - [src](#src)
+# Bumblebee
+
+<p align="center"> 
+    <img src="https://raw.githubusercontent.com/Abhishek-kumar09/Bumblebee/shivam-dev/assets/img/bumblebee_logo.png" alt="" widht=250 height=250>
+ </p>
+
+ <p align="center"> 
+<img src="https://img.shields.io/badge/Framework-React-Cyan?style=for-the-badge&logo=react" alt=""> <img src="https://img.shields.io/badge/Built_With-Twitch-purple?style=for-the-badge&logo=twitch" alt="">
+ </p>
+
+### A Twitch Extension Made just for you
+Get Channel points on Twitch the next time you play with your favorite streamers! 
+
+## It's in the game
+
+<p align="center"> 
+    <img src="https://raw.githubusercontent.com/Abhishek-kumar09/Bumblebee/shivam-dev/assets/img/videogame_asset.png" alt="" widht=250 height=250>
+ </p>
+ 
+Are you a gamer? a streamer? are you both? You should feel right at home if you fall into any of the category above.
+
+## Community
+
+Bumblebee is not just about gaming, it's about caring about the community. Everytime you make a donation, you get rewarded as well. So what are you waiting for? put on your gaming gear and get ready to be rewarded.
+
+# Getting Started
 
 ## Requirements
 
