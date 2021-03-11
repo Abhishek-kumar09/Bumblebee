@@ -1,0 +1,80 @@
+{
+  "allowHttpBackend": false,
+  "backendCommand": "",
+  "backendFolderName": "public",
+  "certificateExceptions": [],
+  "extensionViews": [],
+  "manifest": {
+    "anchor": "panel",
+    "assetUrls": [],
+    "authorName": "Autobots",
+    "bitsEnabled": false,
+    "canInstall": true,
+    "configUrl": "https://yb55q0fq53xnagy5amdj8p55c1433b.ext-twitch.tv/yb55q0fq53xnagy5amdj8p55c1433b/0.0.1/3f314bd0e6025c4c895ff64145ac1b07/config.html",
+    "configurationLocation": "custom",
+    "description": "Are you a gamer? a streamer? are you both? You should feel right at home if you fall into any of the categories above. Bumblebee is not just about gaming, it's about caring for the community. Every time you make a donation, you get rewarded as well. So what are you waiting for? put on your gaming gear and get ready to be rewarded.",
+    "eulaTosUrl": "",
+    "hasChatSupport": true,
+    "iconUrl": "https://extensions-discovery-images.twitch.tv/yb55q0fq53xnagy5amdj8p55c1433b/0.0.1/logo9ab0e8f6-43b9-4c7a-8d2b-c2c77a4b93b7",
+    "iconUrls": {
+      "100x100": "https://extensions-discovery-images.twitch.tv/yb55q0fq53xnagy5amdj8p55c1433b/0.0.1/logo9ab0e8f6-43b9-4c7a-8d2b-c2c77a4b93b7",
+      "300x200": "https://extensions-discovery-images.twitch.tv/yb55q0fq53xnagy5amdj8p55c1433b/0.0.1/discoveryddacfabf-61e4-4deb-aa2b-17e3b1240d29"
+    },
+    "id": "yb55q0fq53xnagy5amdj8p55c1433b",
+    "installationCount": -42,
+    "liveConfigUrl": "",
+    "name": "BumbleBee",
+    "panelHeight": 300,
+    "privacyPolicyUrl": "",
+    "requestIdentityLink": false,
+    "requiredBroadcasterAbilities": [],
+    "screenshotUrls": [
+      "https://extensions-discovery-images.twitch.tv/yb55q0fq53xnagy5amdj8p55c1433b/0.0.1/screenshot4eef02bb-edd5-4cbb-b7ea-365b3afb9d9c"
+    ],
+    "sku": "",
+    "state": "Assets Uploaded",
+    "subscriptionsSupportLevel": "none",
+    "summary": "Get Channel points on Twitch the next time you play with your favorite streamers",
+    "supportEmail": "shivam.318b@gmail.com",
+    "vendorCode": "",
+    "version": "0.0.1",
+    "viewerSummary": "",
+    "viewerUrl": "https://yb55q0fq53xnagy5amdj8p55c1433b.ext-twitch.tv/yb55q0fq53xnagy5amdj8p55c1433b/0.0.1/3f314bd0e6025c4c895ff64145ac1b07/panel.html",
+    "viewerUrls": {
+      "panel": "https://yb55q0fq53xnagy5amdj8p55c1433b.ext-twitch.tv/yb55q0fq53xnagy5amdj8p55c1433b/0.0.1/3f314bd0e6025c4c895ff64145ac1b07/panel.html",
+      "component": "https://yb55q0fq53xnagy5amdj8p55c1433b.ext-twitch.tv/yb55q0fq53xnagy5amdj8p55c1433b/0.0.1/3f314bd0e6025c4c895ff64145ac1b07/video_component.html"
+    },
+    "views": {
+      "panel": {
+        "viewerUrl": "https://yb55q0fq53xnagy5amdj8p55c1433b.ext-twitch.tv/yb55q0fq53xnagy5amdj8p55c1433b/0.0.1/3f314bd0e6025c4c895ff64145ac1b07/panel.html",
+        "height": 300,
+        "canLinkExternalContent": false
+      },
+      "component": {
+        "viewerUrl": "https://yb55q0fq53xnagy5amdj8p55c1433b.ext-twitch.tv/yb55q0fq53xnagy5amdj8p55c1433b/0.0.1/3f314bd0e6025c4c895ff64145ac1b07/video_component.html",
+        "aspectWidth": 0,
+        "aspectHeight": 0,
+        "aspectRatioX": 300,
+        "aspectRatioY": 200,
+        "scalePixels": 1024,
+        "targetHeight": 3000,
+        "size": 0,
+        "zoom": false,
+        "zoomPixels": 0,
+        "canLinkExternalContent": false,
+        "autoScale": true
+      },
+      "config": {
+        "viewerUrl": "https://yb55q0fq53xnagy5amdj8p55c1433b.ext-twitch.tv/yb55q0fq53xnagy5amdj8p55c1433b/0.0.1/3f314bd0e6025c4c895ff64145ac1b07/config.html",
+        "canLinkExternalContent": false
+      }
+    },
+    "whitelistedConfigUrls": [],
+    "whitelistedPanelUrls": []
+  },
+  "frontendCommand": "",
+  "frontendFolderName": "",
+  "name": "BumbleBee.tv",
+  "usingRandomFrontendHostingPort": false,
+  "version": 3
+}
