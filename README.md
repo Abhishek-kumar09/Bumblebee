@@ -1,7 +1,7 @@
 # Bumblebee
 
 <p align="center"> 
-    <img src="https://raw.githubusercontent.com/Abhishek-kumar09/Bumblebee/shivam-dev/assets/img/default_bumblebee_logo.png" alt="" widht=250 height=250>
+    <img src="https://raw.githubusercontent.com/Abhishek-kumar09/Bumblebee/shivam-dev/assets/img/default_bumblebee_logo.png.png" alt="" widht=250 height=250>
  </p>
 
  <p align="center"> 
