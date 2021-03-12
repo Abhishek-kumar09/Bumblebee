@@ -2,10 +2,63 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.App-light{
-    color:#232127;
+.App-light {
+    color: #232127;
 }
 
-.App-dark{
-    color:#e5e3e8;
+.App-dark {
+    color: #fff;
+}
+
+.container-board {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 32px;
+    background: rgba(64, 64, 66, 0.75);
+    border: 1px solid #fff;
+    border-radius: 4px;
+    max-height: 70vh;
+    overflow-y: scroll;
+}
+
+.player-card {
+    width: 372px;
+    height: 63px;
+    border-radius: 4px;
+    background: rgba(64, 64, 66, 0.75);
+    border: 1px solid rgba(255, 255, 255, 1);
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    margin: 24px 0px;
+}
+
+.number {
+    margin-right: 8px;
+}
+
+h5, h6  {
+    margin: 8px;
+}
+
+.buttons {
+    margin-right: 16px;
+}
+
+.button-play {
+    margin: 16px 10px;
+    border: 2px solid #71F1C3;
+    color: #71F1C3;
+    background-color: transparent;
+    border-radius: 8px;
+}
+
+
+.button-remove {
+    margin: 16px 0px;
+    border: 2px solid #7DACE4;
+    color: #7DACE4;
+    background-color: transparent;
+    border-radius: 8px;
 }
