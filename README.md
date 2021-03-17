@@ -1,14 +1,14 @@
 # Bumblebee
 
 <p align="center"> 
-    <img src="https://raw.githubusercontent.com/Abhishek-kumar09/Bumblebee/shivam-dev/assets/img/bumblebee_logo.png" alt="" widht=250 height=250>
+    <img src="https://raw.githubusercontent.com/Abhishek-kumar09/Bumblebee/shivam-dev/assets/img/default_bumblebee_logo.png.png" alt="" widht=250 height=250>
  </p>
 
  <p align="center"> 
 <img src="https://img.shields.io/badge/Framework-React-Cyan?style=for-the-badge&logo=react" alt=""> <img src="https://img.shields.io/badge/Built_With-Twitch-purple?style=for-the-badge&logo=twitch" alt="">
  </p>
 
-### A Twitch Extension Made just for you
+### About
 Get Channel points on Twitch the next time you play with your favorite streamers! 
 
 ## It's in the game
@@ -21,13 +21,17 @@ Are you a gamer? a streamer? are you both? You should feel right at home if you 
 
 ## Community
 
-Bumblebee is not just about gaming, it's about caring about the community. Everytime you make a donation, you get rewarded as well. So what are you waiting for? put on your gaming gear and get ready to be rewarded.
+Wait, we heard you love Twitch and Gaming! Bumblebee is not just about gaming, it's about caring for the community. Every time you make a donation to a streamer, you get rewarded as well. So what are you waiting for? put on your gaming gear and get ready to be rewarded.
+
+<p align="center"> 
+    <img src="https://raw.githubusercontent.com/Abhishek-kumar09/Bumblebee/shivam-dev/assets/img/games.png" alt="" widht=250 height=250>
+ </p>
 
 # Getting Started
 
 ## Requirements
 
-There is only one requirement to use this template. 
+There is only one requirement to use this extension. 
 
 * Node.JS LTS or greater. 
 
