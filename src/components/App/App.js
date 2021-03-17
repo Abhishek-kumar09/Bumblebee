@@ -13,7 +13,14 @@ export default class App extends React.Component {
         this.state = {
             finishedLoading: false,
             theme: 'light',
-            isVisible: true
+            isVisible: true,
+            items: [
+                { name: "Abhishek Kumar", ign: "Abhi@87649817" },
+                { name: "Shivam Beniwal", ign: "beniwal@1223" },
+                { name: "Peter Nguyen", ign: "petercrackthecode" },
+                { name: "Nguyen's Brother", ign: "nguyen'sbrother" },
+                { name: "Penguin Lover", ign: "penguintheDev" },
+            ]
         }
     }
 
@@ -71,12 +78,39 @@ export default class App extends React.Component {
         }
     }
 
+    // player = [
+    //     {name:"Abhishek Kumar", ign:"Abhi@87649817"},
+    //     {name:"Shivam Beniwal", ign:"beniwal@1223" },
+    //     {name:"Peter Nguyen", ign:"petercrackthecode"},
+    //     {name:"Nguyen's Brother", ign:"nguyen'sbrother"},
+    //     {name:}
+    // ]
+
+
     render() {
         if (this.state.finishedLoading && this.state.isVisible) {
             return (
                 <div className="App">
-                    <div className={this.state.theme === 'light' ? 'App-light' : 'App-dark'} style={{ color: '#fff' }} >
-                        <p>Hello Sire</p>
+                    <div className="container-board App-dark">
+                        <h3>
+                            Ready Players: {this.state.items.length}
+                        </h3>
+                        {this.state.items.map(({name, ign}, index) => {
+                            return <CardItem key={index} id={index+1} name={name} ign={ign} key={index} />
+                        })}
+                    </div>
+                    {/* <iframe src="https://gifer.com/embed/xw" width="150" height="150" frameBorder="0" allowFullScreen
+                        style={{
+                            pointerEvents: 'none',
+                            backgroundColor: 'green',
+                            position: 'absolute',
+                            right: 0,
+                            top: 200
+                        }}o
+                    /> */}
+
+                    {/* <div className={this.state.theme === 'light' ? 'App-light' : 'App-dark'}>
+                        <p>Hello Peter</p>
                         <p>My token is: {this.Authentication.state.token}</p>
                         <iframe src="https://gifer.com/embed/xw" width="150" height="150" frameBorder="0" allowFullScreen style={{ pointerEvents: 'none' }} />
                         <iframe src="https://gifer.com/embed/1aFh" width="150" height="150" frameBorder="0" allowFullScreen></iframe>
@@ -86,7 +120,7 @@ export default class App extends React.Component {
                                 ? <p>I am currently a mod, and here's a special mod button <input value='mod button' type='button' /></p>
                                 : 'I am currently not a mod.'}</div>
                         <p>I have {this.Authentication.hasSharedId() ? `shared my ID, and my user_id is ${this.Authentication.getUserId()}` : 'not shared my ID'}.</p>
-                    </div>
+                    </div> */}
                 </div>
             )
         } else {
@@ -96,4 +130,33 @@ export default class App extends React.Component {
             )
         }
     }
+}
+
+
+function CardItem({id, name, ign }) {
+    return (
+        <div className="player-card" >
+            <div style={{ display: 'flex', flexGrow: 1 }}>
+                <h5 className="number" style={{marginTop: '20px'}}>
+                    {id}
+        </h5>
+                <div>
+                    <h5>
+                        {name}
+                    </h5>
+                    <h6>
+                        IGN: {ign}
+                    </h6>
+                </div>
+            </div>
+            <div className="buttons">
+                <button className="button-play" onClick={() => { console.log("hello") }}>
+                    <h5>Play</h5>
+                </button>
+                <button className="button-remove">
+                    <h5>Remove</h5>
+                </button>
+            </div>
+        </div>
+    )
 }
