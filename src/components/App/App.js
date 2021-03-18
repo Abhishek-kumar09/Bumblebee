@@ -1,6 +1,7 @@
 import React from 'react'
 import Authentication from '../../util/Authentication/Authentication'
-
+import axios from 'axios'
+import {firebase, firestore} from '../firebase/firebase'
 import './App.css'
 
 export default class App extends React.Component {
@@ -20,7 +21,9 @@ export default class App extends React.Component {
                 { name: "Peter Nguyen", ign: "petercrackthecode" },
                 { name: "Nguyen's Brother", ign: "nguyen'sbrother" },
                 { name: "Penguin Lover", ign: "penguintheDev" },
-            ]
+            ],
+            minified: false,
+            req: ""
         }
     }
 
@@ -70,6 +73,7 @@ export default class App extends React.Component {
                 this.contextUpdate(context, delta)
             })
         }
+
     }
 
     componentWillUnmount() {
@@ -78,49 +82,95 @@ export default class App extends React.Component {
         }
     }
 
-    // player = [
-    //     {name:"Abhishek Kumar", ign:"Abhi@87649817"},
-    //     {name:"Shivam Beniwal", ign:"beniwal@1223" },
-    //     {name:"Peter Nguyen", ign:"petercrackthecode"},
-    //     {name:"Nguyen's Brother", ign:"nguyen'sbrother"},
-    //     {name:}
-    // ]
+    toggleHide() {
+        this.setState(() => { return { minified: !this.state.minified } })
+    }
 
+    handlePlay(index) {
+        const added = this.state.items.splice(index, 1)
+        this.addTofirebase("added", added[0])
+
+        this.setState(() => {
+            return {
+                items: this.state.items
+            }
+        })
+    }
+
+    handleRemove(index) {
+        const removed = this.state.items.splice(index, 1)
+
+        this.addTofirebase("removed", removed[0])
+
+        this.setState(() => {
+            return {
+                items: this.state.items
+            }
+        })
+    }
+
+
+    addTofirebase(status, data) {
+        const time = new Date()
+        data.time = time;
+
+        firestore.collection(status).doc().set(data)
+            .then(() => {
+                console.log("Document successfully written!");
+            })
+            .catch((error) => {
+                console.error("Error writing document: ", error);
+            });
+    }
 
     render() {
         if (this.state.finishedLoading && this.state.isVisible) {
             return (
                 <div className="App">
-                    <div className="container-board App-dark">
-                        <h3>
-                            Ready Players: {this.state.items.length}
-                        </h3>
-                        {this.state.items.map(({name, ign}, index) => {
-                            return <CardItem key={index} id={index+1} name={name} ign={ign} key={index} />
-                        })}
-                    </div>
-                    {/* <iframe src="https://gifer.com/embed/xw" width="150" height="150" frameBorder="0" allowFullScreen
-                        style={{
-                            pointerEvents: 'none',
-                            backgroundColor: 'green',
-                            position: 'absolute',
-                            right: 0,
-                            top: 200
-                        }}o
-                    /> */}
-
-                    {/* <div className={this.state.theme === 'light' ? 'App-light' : 'App-dark'}>
-                        <p>Hello Peter</p>
-                        <p>My token is: {this.Authentication.state.token}</p>
-                        <iframe src="https://gifer.com/embed/xw" width="150" height="150" frameBorder="0" allowFullScreen style={{ pointerEvents: 'none' }} />
-                        <iframe src="https://gifer.com/embed/1aFh" width="150" height="150" frameBorder="0" allowFullScreen></iframe>
-                        <p>My opaque ID is {this.Authentication.getOpaqueId()}.</p>
-                        <div>
-                            {this.Authentication.isModerator()
-                                ? <p>I am currently a mod, and here's a special mod button <input value='mod button' type='button' /></p>
-                                : 'I am currently not a mod.'}</div>
-                        <p>I have {this.Authentication.hasSharedId() ? `shared my ID, and my user_id is ${this.Authentication.getUserId()}` : 'not shared my ID'}.</p>
-                    </div> */}
+                    {this.state.minified
+                        ? (
+                            <div className="image-wrapper" onClick={this.toggleHide.bind(this)} >
+                                <img
+                                    src={require("./i.png")}
+                                    alt="logo"
+                                    height="50px"
+                                />
+                            </div>
+                        )
+                        : (
+                            <div className="container-board App-dark">
+                                <div className="header-wrapper">
+                                    <h3 style={{ flexGrow: 1 }}>
+                                        Ready Players: {this.state.items.length}
+                                    </h3>
+                                    <button className="button" onClick={this.toggleHide.bind(this)}>Hide</button>
+                                </div>
+                                {this.state.items.map(({ name, ign }, index) => {
+                                    return (<div key={index} className="player-card" >
+                                        <div style={{ display: 'flex', flexGrow: 1 }}>
+                                            <h5 className="number" style={{ marginTop: '20px' }}>
+                                                {index + 1}
+                                            </h5>
+                                            <div>
+                                                <h5>
+                                                    {name}
+                                                </h5>
+                                                <h6>
+                                                    IGN: {ign}
+                                                </h6>
+                                            </div>
+                                        </div>
+                                        <div className="buttons">
+                                            <button className="button-play" onClick={() => this.handlePlay(index)}>
+                                                <h5>Play</h5>
+                                            </button>
+                                            <button className="button-remove" onClick={() => this.handleRemove(index)}>
+                                                <h5>Remove</h5>
+                                            </button>
+                                        </div>
+                                    </div>)
+                                })}
+                            </div>)}
                 </div>
             )
         } else {
@@ -130,33 +180,4 @@ export default class App extends React.Component {
             )
         }
     }
-}
-
-
-function CardItem({id, name, ign }) {
-    return (
-        <div className="player-card" >
-            <div style={{ display: 'flex', flexGrow: 1 }}>
-                <h5 className="number" style={{marginTop: '20px'}}>
-                    {id}
-        </h5>
-                <div>
-                    <h5>
-                        {name}
-                    </h5>
-                    <h6>
-                        IGN: {ign}
-                    </h6>
-                </div>
-            </div>
-            <div className="buttons">
-                <button className="button-play" onClick={() => { console.log("hello") }}>
-                    <h5>Play</h5>
-                </button>
-                <button className="button-remove">
-                    <h5>Remove</h5>
-                </button>
-            </div>
-        </div>
-    )
 }

@@ -62,3 +62,24 @@ h5, h6  {
     background-color: transparent;
     border-radius: 8px;
 }
+
+.image-wrapper {
+    position: absolute;
+    right: 10px;
+    top: 50%;    
+    transform: translateY(-50%);
+    /* transform: translate(50%, 10%); */
+    cursor: pointer;
+}
+
+.header-wrapper {
+    display: flex;
+}
+
+.button {
+    margin: 16px 0px;
+    padding: 4px 16px;
+    border: 2px solid #7DACE4;
+    border-radius: 8px;
+    cursor: pointer;
+}
