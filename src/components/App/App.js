@@ -3,6 +3,7 @@ import Authentication from '../../util/Authentication/Authentication'
 import axios from 'axios'
 import {firebase, firestore} from '../firebase/firebase'
 import './App.css'
+import { v4 as uuidv4 } from 'uuid';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -15,6 +16,7 @@ export default class App extends React.Component {
             finishedLoading: false,
             theme: 'light',
             isVisible: true,
+            lobby: uuidv4(),
             items: [
                 { name: "Abhishek Kumar", ign: "Abhi@87649817" },
                 { name: "Shivam Beniwal", ign: "beniwal@1223" },
@@ -114,13 +116,21 @@ export default class App extends React.Component {
         const time = new Date()
         data.time = time;
 
-        firestore.collection(status).doc().set(data)
+        firestore.collection(status).doc(this.state.lobby).collection(this.state.lobby).doc().set(data)
             .then(() => {
                 console.log("Document successfully written!");
             })
             .catch((error) => {
                 console.error("Error writing document: ", error);
             });
+    }
+
+    createNewLobby() {
+        this.setState(() => {
+            return {
+                lobby: uuidv4()
+            }
+        })
     }
 
     render() {
@@ -140,7 +150,7 @@ export default class App extends React.Component {
                         : (
                             <div className="container-board App-dark">
                                 <div className="header-wrapper">
-                                    <h3 style={{ flexGrow: 1 }}>
+                                    <h3 style={{ flexGrow: 1 }}>    
                                         Ready Players: {this.state.items.length}
                                     </h3>
                                     <button className="button" onClick={this.toggleHide.bind(this)}>Hide</button>
