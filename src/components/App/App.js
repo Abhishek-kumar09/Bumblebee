@@ -1,7 +1,7 @@
 import React from 'react'
 import Authentication from '../../util/Authentication/Authentication'
 import axios from 'axios'
-import {firebase, firestore} from '../firebase/firebase'
+import { firebase, firestore } from '../firebase/firebase'
 import './App.css'
 import { v4 as uuidv4 } from 'uuid';
 
@@ -18,11 +18,11 @@ export default class App extends React.Component {
             isVisible: true,
             lobby: uuidv4(),
             items: [
-                { name: "Abhishek Kumar", ign: "Abhi@87649817" },
-                { name: "Shivam Beniwal", ign: "beniwal@1223" },
-                { name: "Peter Nguyen", ign: "petercrackthecode" },
-                { name: "Nguyen's Brother", ign: "nguyen'sbrother" },
-                { name: "Penguin Lover", ign: "penguintheDev" },
+                { name: "Abhishek Kumar", ign: "Abhi@87649817", reward: 10 },
+                { name: "Shivam Beniwal", ign: "beniwal@1223", reward: 20 },
+                { name: "Peter Nguyen", ign: "petercrackthecode", reward: 30 },
+                { name: "Nguyen's Brother", ign: "nguyen'sbrother", reward: 5 },
+                { name: "Penguin Lover", ign: "penguintheDev", reward: 100 },
             ],
             minified: false,
             req: ""
@@ -90,7 +90,8 @@ export default class App extends React.Component {
 
     handlePlay(index) {
         const added = this.state.items.splice(index, 1)
-        this.addTofirebase("added", added[0])
+        this.addTofirebaseCollection("added", added[0], this.state.lobby)
+        this.addTofirebase("users", added[0], added[0].ign)
 
         this.setState(() => {
             return {
@@ -101,8 +102,8 @@ export default class App extends React.Component {
 
     handleRemove(index) {
         const removed = this.state.items.splice(index, 1)
-
-        this.addTofirebase("removed", removed[0])
+        this.addTofirebaseCollection("removed", removed[0], this.state.lobby)
+        this.addTofirebase("users", removed[0], removed[0].ign)
 
         this.setState(() => {
             return {
@@ -111,12 +112,24 @@ export default class App extends React.Component {
         })
     }
 
+    addTofirebase(status, data, docId) {
+        const time = new Date();
+        data.time = time;
 
-    addTofirebase(status, data) {
+        firestore.collection(status).doc(docId).set(data)
+            .then(() => {
+                console.log("Document successfully written!");
+            })
+            .catch((error) => {
+                console.error("Error writing document: ", error);
+            });
+    }
+
+    addTofirebaseCollection(status, data, docId) {
         const time = new Date()
         data.time = time;
 
-        firestore.collection(status).doc(this.state.lobby).collection(this.state.lobby).doc().set(data)
+        firestore.collection(status).doc(docId).collection(docId).doc().set(data)
             .then(() => {
                 console.log("Document successfully written!");
             })
@@ -150,36 +163,39 @@ export default class App extends React.Component {
                         : (
                             <div className="container-board App-dark">
                                 <div className="header-wrapper">
-                                    <h3 style={{ flexGrow: 1 }}>    
+                                    <h3 style={{ flexGrow: 1 }}>
                                         Ready Players: {this.state.items.length}
                                     </h3>
                                     <button className="button" onClick={this.toggleHide.bind(this)}>Hide</button>
                                 </div>
-                                {this.state.items.map(({ name, ign }, index) => {
-                                    return (<div key={index} className="player-card" >
-                                        <div style={{ display: 'flex', flexGrow: 1 }}>
-                                            <h5 className="number" style={{ marginTop: '20px' }}>
-                                                {index + 1}
-                                            </h5>
-                                            <div>
-                                                <h5>
-                                                    {name}
+                                {this.state.items.length === 0 ? (<ZeroPlayer />) : (
+                                    this.state.items.map(({ name, ign }, index) => {
+                                        return (<div key={index} className="player-card" >
+                                            <div style={{ display: 'flex', flexGrow: 1 }}>
+                                                <h5 className="number" style={{ marginTop: '20px' }}>
+                                                    {index + 1}
                                                 </h5>
-                                                <h6>
-                                                    IGN: {ign}
-                                                </h6>
+                                                <div>
+                                                    <h5>
+                                                        {name}
+                                                    </h5>
+                                                    <h6>
+                                                        IGN: {ign}
+                                                    </h6>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="buttons">
-                                            <button className="button-play" onClick={() => this.handlePlay(index)}>
-                                                <h5>Play</h5>
-                                            </button>
-                                            <button className="button-remove" onClick={() => this.handleRemove(index)}>
-                                                <h5>Remove</h5>
-                                            </button>
-                                        </div>
-                                    </div>)
-                                })}
+                                            <div className="buttons">
+                                                <button className="button-play" onClick={() => this.handlePlay(index)}>
+                                                    <h5>Play</h5>
+                                                </button>
+                                                <button className="button-remove" onClick={() => this.handleRemove(index)}>
+                                                    <h5>Remove</h5>
+                                                </button>
+                                            </div>
+                                        </div>)
+                                    })
+                                )}
+
                             </div>)}
                 </div>
             )
@@ -190,4 +206,14 @@ export default class App extends React.Component {
             )
         }
     }
+}
+
+function ZeroPlayer() {
+    return (
+        <div>
+            <h3>
+                No More Players in the Queue
+            </h3>
+        </div>
+    )
 }

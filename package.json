@@ -36,6 +36,7 @@
     "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
     "axios": "^0.21.1",
     "core-js": "^3.5.0",
     "firebase": "^8.3.0",
